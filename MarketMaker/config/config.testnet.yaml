@@ -1,0 +1,73 @@
+# Bybit Market Maker - TESTNET Configuration
+# 使用虚拟资金测试，100% 安全
+
+# Exchange settings - TESTNET
+exchange:
+  name: "bybit"
+  testnet: true  # ✅ 测试网 - 使用虚拟资金
+  api_key: ""    # ← 填入你的测试网 API key (从 testnet.bybit.com 获取)
+  api_secret: "" # ← 填入你的测试网 API secret
+  
+# Trading symbol
+symbol:
+  name: "ETHUSDC"
+  category: "linear"  # Perpetual futures
+  
+# Capital and leverage - TESTNET 测试参数
+capital:
+  initial_usdc: 1000.0  # 虚拟资金，可以随意设置
+  leverage: 5
+  
+# Grid strategy parameters
+grid:
+  spacing_pct: 0.1           # 0.1% = 10 basis points
+  num_levels: 5              # Number of grid levels on each side
+  order_size_usdc: 20.0      # Order size per grid level
+  slide_threshold_pct: 0.15  # Re-grid when price moves 0.15%
+  
+# Inventory management
+inventory:
+  max_position_pct: 0.8
+  skew_threshold_pct: 30.0
+  bias_strength: 0.5
+  
+# Risk management
+risk:
+  max_loss_pct: 20.0
+  max_leverage: 5.5
+  max_position_size_eth: 10.0
+  trade_stop_loss_pct: 5.0
+  
+# Order management
+orders:
+  retry_attempts: 3
+  retry_delay_ms: 500
+  reconcile_interval_sec: 30
+  cancel_timeout_sec: 5
+  
+# WebSocket settings
+websocket:
+  ping_interval_sec: 20
+  reconnect_delay_sec: 5
+  max_reconnect_attempts: 10
+  message_timeout_sec: 10
+  
+# Logging
+logging:
+  level: "INFO"
+  console: true
+  file: true
+  rotation: "50 MB"
+  retention: "7 days"
+  
+# State persistence
+persistence:
+  enabled: true
+  state_file: "state/bot_state_testnet.json"
+  save_interval_sec: 60
+  
+# Operational settings
+operational:
+  dry_run: false  # false = 真实下单（但在测试网，使用虚拟资金）
+  main_loop_interval_sec: 1
+  startup_delay_sec: 3

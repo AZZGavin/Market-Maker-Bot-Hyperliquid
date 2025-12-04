@@ -1,0 +1,23 @@
+{
+  "timestamp": 1642302.267649125,
+  "position": {
+    "size": 0.0,
+    "entry_price": 0.0,
+    "unrealized_pnl": 0.0,
+    "inventory_pct": 0.0,
+    "inventory_skew": 0.0,
+    "max_position": 1.282030736686912
+  },
+  "risk": {
+    "initial_capital": 1000.0,
+    "current_capital": 1000.0,
+    "total_pnl": 0.0,
+    "pnl_pct": 0.0,
+    "realized_pnl": 0.0,
+    "unrealized_pnl": 0.0,
+    "total_fees": 0.0,
+    "emergency_stop": false,
+    "stop_reason": ""
+  },
+  "active_orders": 0
+}

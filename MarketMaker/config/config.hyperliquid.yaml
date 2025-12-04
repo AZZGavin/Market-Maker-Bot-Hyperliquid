@@ -1,0 +1,71 @@
+# Hyperliquid Market Maker Configuration
+
+# Exchange settings
+exchange:
+  name: "hyperliquid"  # "bybit" or "hyperliquid"
+  testnet: true        # Set to false for mainnet
+  private_key: "0xe86a2e0e9e8c61ef544de6b37eafebbee714a83a95101e532e14005cc1a44ea1"      # Your Ethereum private key (with or without 0x prefix)
+  
+# Trading symbol
+symbol:
+  name: "ETH"          # For Hyperliquid: "ETH", "BTC", etc.
+  category: "perp"     # Perpetual futures
+  
+# Capital and leverage
+capital:
+  initial_usdc: 1000.0
+  leverage: 5
+  
+# Grid strategy parameters
+grid:
+  spacing_pct: 0.1           # 0.1% = 10 basis points
+  num_levels: 5              # Number of grid levels on each side
+  order_size_usdc: 18.0      # Order size per grid level (adjusted for precision)
+  slide_threshold_pct: 0.15  # Re-grid when price moves 0.15%
+  
+# Inventory management
+inventory:
+  max_position_pct: 0.8      # Use 80% of max position
+  skew_threshold_pct: 30.0   # ±30% of max position
+  bias_strength: 0.5
+  
+# Risk management
+risk:
+  max_loss_pct: 20.0         # Stop trading at 20% loss
+  max_leverage: 5.5          # Emergency stop if leverage exceeds this
+  max_position_size_eth: 10.0  # Absolute max position
+  trade_stop_loss_pct: 5.0
+  
+# Order management
+orders:
+  retry_attempts: 3
+  retry_delay_ms: 500
+  reconcile_interval_sec: 30
+  cancel_timeout_sec: 5
+  
+# WebSocket settings
+websocket:
+  ping_interval_sec: 20
+  reconnect_delay_sec: 5
+  max_reconnect_attempts: 10
+  message_timeout_sec: 10
+  
+# Logging
+logging:
+  level: "INFO"
+  console: true
+  file: true
+  rotation: "50 MB"
+  retention: "7 days"
+  
+# State persistence
+persistence:
+  enabled: true
+  state_file: "state/bot_state.json"
+  save_interval_sec: 60
+  
+# Operational settings
+operational:
+  dry_run: false             # If true, log orders but don't execute
+  main_loop_interval_sec: 1
+  startup_delay_sec: 3

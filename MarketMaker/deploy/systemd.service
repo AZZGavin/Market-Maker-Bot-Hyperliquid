@@ -1,0 +1,16 @@
+[Unit]
+Description=Bybit Market Maker Bot
+After=network.target
+
+[Service]
+Type=simple
+User=zhouguanwei
+WorkingDirectory=/Users/zhouguanwei/Documents/Crypto/MarketMaker
+ExecStart=/Users/zhouguanwei/Documents/Crypto/MarketMaker/venv/bin/python /Users/zhouguanwei/Documents/Crypto/MarketMaker/main.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/Users/zhouguanwei/Documents/Crypto/MarketMaker/logs/systemd.log
+StandardError=append:/Users/zhouguanwei/Documents/Crypto/MarketMaker/logs/systemd_error.log
+
+[Install]
+WantedBy=multi-user.target
